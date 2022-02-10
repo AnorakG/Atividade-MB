@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+    <div class='container-login'>
+        <input type="text" id="nome" placeholder="Insira aqui o nome desejado"><br>
+        <input type="text" id="email" placeholder="Insira aqui o seu e-mail"><br>
+        <input type="password" id="senha1" placeholder="Insira aqui sua senha" onchange="validarSenha()"><br>
+        <input type="password" id="senha2" placeholder="Confime sua senha" onchange="validarSenha()"><br>
+            <input type="checkbox" id="senhaVisivel">
+            <label for="senhaVisivel">Senha visível</label><br>
+        <input type="date" id="dataNascimento" onchange="confirmarIdade()"><br>
+        <input type="button"id="botaoCadastro" onclick="cadastrar()" value="Cadastre-se">
+        <input type="button"id="botaoRetorno"  onclick="voltar()" value="Volte">
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
