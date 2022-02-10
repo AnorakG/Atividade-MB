@@ -111,3 +111,27 @@ function confirmarSenha(){
         })
     }
 }
+function criaPlanilha() {
+    planilha = JSON.parse(localStorage.getItem("users"))
+    console.log(planilha)
+    const body = document.body,
+          tbl = document.getElementById('planilha');  
+    for (let i = 0; i < JSON.parse(localStorage.getItem('users')).length; i++) {
+      const tr = tbl.insertRow();
+      for (let j = 0; j < 4; j++) {
+        const td = tr.insertCell();
+        if(j===0){
+          td.appendChild(document.createTextNode(planilha[i].nome));
+        }
+        if(j===1){
+            td.appendChild(document.createTextNode(planilha[i].senha));
+        }
+        if(j===2){
+            td.appendChild(document.createTextNode(planilha[i].email));
+        }
+        if(j===3){
+            td.appendChild(document.createTextNode(planilha[i].idade));
+        }
+      }
+    }
+}
