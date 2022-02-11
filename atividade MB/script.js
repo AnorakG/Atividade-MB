@@ -59,23 +59,29 @@ function confirmarIdade(){
 function cadastrar(){
     console.log("cadastrar");
     console.log(users);
-    if(users.find(confirmarNome)){
+    if(senha1.value.length == 0||senha2.value.length == 0||nome.value.length==0||email.value.length==0||dataNascimento.value.length==0){
+        Swal.fire({
+            title: 'Preencha todos os campos antes de se cadastrar',
+            icon: 'error',
+            timer:'800'
+          })
+    }else if(users.find(confirmarNome)){
         Swal.fire({
             title: 'Nome de usuário já cadastrado <br> Tente outro',
             icon: 'error',
-            timer:'700'
+            timer:'800'
           })
     }else if(users.find(confirmarEmail)){
         Swal.fire({
             title: 'E-mail já cadastrado <br> Esqueceu sua senha?',
             icon: 'question',
-            timer:'700'
+            timer:'800'
         })
     }else if(senha1.value != senha2.value){
         Swal.fire({
-            title: 'Senhas não combinam >=(',
+            title: 'Senhas não combinam',
             icon: 'error',
-            timer:'700'
+            timer:'800'
         })
     }else{
         users.push({nome: nome.value, senha: senha2.value, email: email.value, idade: idade})
@@ -83,9 +89,9 @@ function cadastrar(){
         console.log(localStorage.getItem('users'))
         console.log("Cadastro feito =)")
         Swal.fire({
-            title: 'Parabéns por se cadastrar! <br> Cadastro realizado =',
+            title: 'Parabéns por se cadastrar! <br> Cadastro realizado.',
             icon: 'success',
-            timer:'700'
+            timer:'800'
         })
     }
 }
