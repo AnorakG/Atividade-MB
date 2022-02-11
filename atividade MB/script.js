@@ -39,12 +39,6 @@ function validarSenha(){
             icon: 'error',
             confirmButtonText: 'Confirme sua senha'
         })
-    }else if(senha1.value != senha2.value ){
-        Swal.fire({
-            title: 'As senhas não combinam =(',
-            icon: 'error',
-            confirmButtonText: 'Confirme sua senha'
-        })
     }else{
         Swal.fire({
             title: 'As senhas combinam =)',
