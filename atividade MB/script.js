@@ -32,19 +32,26 @@ senhaVisivel.addEventListener('change', (event) => {
 })
 
 function validarSenha(){
-    if(senha1.value == senha2.value){
-        Swal.fire({
-            title: 'As senhas combinam =)',
-            icon: 'success',
-            confirmButtonText: 'Termine seu cadastro'
-          })
-    }else{
+    if(senha1.value.length == 0||senha2.value.length == 0){}else{
+    if(senha1.value != senha2.value ){
         Swal.fire({
             title: 'As senhas não combinam =(',
             icon: 'error',
             confirmButtonText: 'Confirme sua senha'
-          })
-    }
+        })
+    }else if(senha1.value != senha2.value ){
+        Swal.fire({
+            title: 'As senhas não combinam =(',
+            icon: 'error',
+            confirmButtonText: 'Confirme sua senha'
+        })
+    }else{
+        Swal.fire({
+            title: 'As senhas combinam =)',
+            icon: 'success',
+            confirmButtonText: 'Termine seu cadastro'
+        })
+    }}
 }
 
 function confirmarIdade(){
@@ -89,12 +96,11 @@ function confirmarNome(users){
 function confirmarEmail(users){
     return users.email === email.value
 }
-
-function buscarNome(usuarios){
-    return usuarios.nome === pesquisa.value;
+function buscarNome(users){
+    return users.nome === pesquisa.value;
 }
-function buscarEmail(usuarios){
-    return usuarios.email === pesquisa.value;
+function buscarEmail(users){
+    return users.email === pesquisa.value;
 }
 function criadorDePlanilha(loopRow,array,tbl){
     for (let i = 0; i < loopRow; i++) {
@@ -123,20 +129,22 @@ function criaPlanilha() {
 }
 
 function pesquisar(){
-    usuarios = JSON.parse(localStorage.getItem('users'))
+    users = JSON.parse(localStorage.getItem('users'))
     const tbl = document.getElementById("pesquisa")
-    if(tbl.rows.length==1){
-        tbl.deleteRow(0)
+    if(tbl.rows.length==2){
+        tbl.deleteRow(1)
     }
-    if(usuarios.find(buscarNome)){
+    if(users.find(buscarNome)){
+        tbl.style.display="inline-table";
         console.log('Nome encontrado!')
         anuncioPesquisa.innerHTML="Aqui está os dados da sua conta:"
-        contaConectada = [usuarios.find(buscarNome)]
+        contaConectada = [users.find(buscarNome)]
         criadorDePlanilha(1,contaConectada,tbl)
-    }else if(usuarios.find(buscarEmail)){
+    }else if(users.find(buscarEmail)){
+        tbl.style.display="inline-table";
         anuncioPesquisa.innerHTML="Aqui está os dados da sua conta:"
         console.log('E-mail encontrado!')
-        contaConectada = [usuarios.find(buscarEmail)]
+        contaConectada = [users.find(buscarEmail)]
         criadorDePlanilha(1,contaConectada,tbl)
     }else{
         anuncioPesquisa.innerHTML=""

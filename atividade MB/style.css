@@ -1,6 +1,7 @@
 body{
     margin: 0%;
     background-color: #3498db;
+    outline: 0;
 }
 
 .box{
@@ -14,6 +15,7 @@ body{
     width: 600px;
     padding: 15px;
     border-radius: 23px;
+    border-style: solid;
     background-color: #000000;
     text-align: center;
 }
@@ -35,6 +37,16 @@ body{
 }
 #th2{
     border-radius: 0px 10px 0px  0px;
+}
+#th3{
+    border-radius: 15px 0px 0px  0px;
+}
+#th6{
+    border-radius: 0px 15px 0px  0px;
+}
+#th3,#th4,#th5,#th6{
+    background-color:#104c74;
+    border-color: black;
 }
 .checkbox{
     display: inline;
@@ -66,7 +78,6 @@ body{
 .meio{
     width: 107%;
 }
-
 #botaoCadastro {
     border-color: #3498db;
     box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
@@ -90,6 +101,7 @@ body{
 }
 #pesquisa{
     border-radius: 35px;
+    display:none;
 }
 #anuncioPesquisa{
     color: white;
