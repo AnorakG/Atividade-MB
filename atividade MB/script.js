@@ -71,6 +71,12 @@ function cadastrar(){
             icon: 'question',
             timer:'700'
         })
+    }else if(senha1.value != senha2.value){
+        Swal.fire({
+            title: 'Senhas não combinam >=(',
+            icon: 'error',
+            timer:'700'
+        })
     }else{
         users.push({nome: nome.value, senha: senha2.value, email: email.value, idade: idade})
         localStorage.setItem("users", JSON.stringify(users))
