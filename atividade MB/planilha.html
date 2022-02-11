@@ -5,19 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planilha</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body onload="criaPlanilha()">   
+<body onload="criaPlanilha()">
+  <div class='container'>
+    <div class='boxPlanilha'> 
     <nav><a href="./index.html">Cadastro</a></nav>
-<table id="planilha">
+    <input type="text" placeholder="Pesquise aqui seu usuário" onchange="pesquisar()" id="pesquisador">
+    <p id="anuncioPesquisa"></p>
+    <table id="pesquisa"></table>
+  <table id="planilha">
     <thead><tr>
-      <th>Nome</th>
-      <th>Senha</th>
+      <th id="th1">Nome</th>
       <th>E-mail</th>
-      <th>Idade</th>
+      <th>Senha</th>
+      <th id="th2">Idade</th>
       </tr>
     </thead>
   </table>
-
+</div> 
+</div> 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./script.js"></script>
 </body>
 </html>

@@ -1,7 +1,5 @@
 let users = []
 
-let formCadastro = document.getElementById('formCadastro')
-
 let nome = document.getElementById('nome')
 let senha1 = document.getElementById('senha1')
 let senha2 = document.getElementById('senha2')
@@ -9,6 +7,9 @@ let email = document.getElementById('email')
 let dataNascimento = document.getElementById('dataNascimento')
 
 let senhaVisivel = document.getElementById('senhaVisivel')
+
+let pesquisa = document.getElementById('pesquisador')
+let anuncioPesquisa = document.getElementById('anuncioPesquisa')
 
 if(localStorage.length>0){
     const contasExistentes = JSON.parse(localStorage.getItem('users'))
@@ -90,48 +91,59 @@ function confirmarEmail(users){
 }
 
 function buscarNome(usuarios){
-    return usuarios.nome === login.value;
+    return usuarios.nome === pesquisa.value;
 }
 function buscarEmail(usuarios){
-    return usuarios.email === login.value;
+    return usuarios.email === pesquisa.value;
 }
-
-function confirmarSenha(){
-    if(contaConectada.senha === senhaUsuario.value){
-        Swal.fire({
-            title: 'Você está logado.',
-            icon: 'success',
-            timer:'700'
-        })
-    }else{
-        Swal.fire({
-            title: 'Senha ou usuário incorretas <br> Tente novamente ou cadastre-se por favor.',
-            icon: 'error',
-            timer:'700'
-        })
-    }
-}
-function criaPlanilha() {
-    planilha = JSON.parse(localStorage.getItem("users"))
-    console.log(planilha)
-    const body = document.body,
-          tbl = document.getElementById('planilha');  
-    for (let i = 0; i < JSON.parse(localStorage.getItem('users')).length; i++) {
-      const tr = tbl.insertRow();
-      for (let j = 0; j < 4; j++) {
-        const td = tr.insertCell();
-        if(j===0){
-          td.appendChild(document.createTextNode(planilha[i].nome));
-        }
-        if(j===1){
-            td.appendChild(document.createTextNode(planilha[i].senha));
-        }
-        if(j===2){
-            td.appendChild(document.createTextNode(planilha[i].email));
-        }
-        if(j===3){
-            td.appendChild(document.createTextNode(planilha[i].idade));
+function criadorDePlanilha(loopRow,array,tbl){
+    for (let i = 0; i < loopRow; i++) {
+        const tr = tbl.insertRow();
+        for (let j = 0; j < 4; j++) {
+          const td = tr.insertCell();
+          if(j===0){
+            td.appendChild(document.createTextNode(array[i].nome));
+          }
+          if(j===1){
+              td.appendChild(document.createTextNode(array[i].email));
+          }
+          if(j===2){
+              td.appendChild(document.createTextNode(array[i].senha));
+          }
+          if(j===3){
+              td.appendChild(document.createTextNode(array[i].idade));
+          }
         }
       }
+    }
+function criaPlanilha() {
+    planilha = JSON.parse(localStorage.getItem("users"))
+    const tbl = document.getElementById('planilha');  
+    criadorDePlanilha(planilha.length,planilha,tbl)
+}
+
+function pesquisar(){
+    usuarios = JSON.parse(localStorage.getItem('users'))
+    const tbl = document.getElementById("pesquisa")
+    if(tbl.rows.length==1){
+        tbl.deleteRow(0)
+    }
+    if(usuarios.find(buscarNome)){
+        console.log('Nome encontrado!')
+        anuncioPesquisa.innerHTML="Aqui está os dados da sua conta:"
+        contaConectada = [usuarios.find(buscarNome)]
+        criadorDePlanilha(1,contaConectada,tbl)
+    }else if(usuarios.find(buscarEmail)){
+        anuncioPesquisa.innerHTML="Aqui está os dados da sua conta:"
+        console.log('E-mail encontrado!')
+        contaConectada = [usuarios.find(buscarEmail)]
+        criadorDePlanilha(1,contaConectada,tbl)
+    }else{
+        anuncioPesquisa.innerHTML=""
+        Swal.fire({
+            title: 'Conta não encontrada =(',
+            icon: 'warning',
+            timer:'700'
+        })
     }
 }

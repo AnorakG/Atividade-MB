@@ -10,7 +10,33 @@ body{
     border-radius: 23px;
     background-color: #000000;
     }
-
+.boxPlanilha{
+    width: 600px;
+    padding: 15px;
+    border-radius: 23px;
+    background-color: #000000;
+    text-align: center;
+}
+.boxPlanilha table{
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: white;
+    width: 100%;
+    border-collapse: collapse;
+}
+.boxPlanilha th{
+    background-color: #3498db;
+}
+.boxPlanilha td{
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+}
+#th1{
+    border-radius: 10px 0px 0px  0px;
+}
+#th2{
+    border-radius: 0px 10px 0px  0px;
+}
 .checkbox{
     display: inline;
     width: 30%;
@@ -51,11 +77,22 @@ body{
 #botaoCadastro:hover {
     box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
   }
-
-  #planilha{
-     font-size: 15;
-  }
+.box nav{
+    text-align: center;
  
- 
-  
-  
+}
+.box a{
+    color: white;
+    font-size: 15px;
+}
+.boxPlanilha a{
+    color: white;
+    font-size: 15px;
+}
+#pesquisa{
+    border-radius: 35px;
+}
+#anuncioPesquisa{
+    color: white;
+    margin: 0;
+}
