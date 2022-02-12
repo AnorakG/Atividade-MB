@@ -153,6 +153,7 @@ function pesquisar(){
         contaConectada = [users.find(buscarEmail)]
         criadorDePlanilha(1,contaConectada,tbl)
     }else{
+        tbl.style.display="none"
         anuncioPesquisa.innerHTML=""
         Swal.fire({
             title: 'Conta não encontrada =(',
